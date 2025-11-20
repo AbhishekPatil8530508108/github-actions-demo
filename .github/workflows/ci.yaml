@@ -1,21 +1,16 @@
 name: CI
 
-# since we need to change the tag name and commit the changes,
-# we need write permission
 permissions:
   contents: write
 
-# global variables
 env:
   DOCKER_IMAGE: abhishekpatil1008/github-action-demo
 
-# select the event
 on:
   push:
     branches:
       - main
 
-# jobs to executed
 jobs:
   build-image-and-push:
     runs-on: ubuntu-latest
@@ -48,14 +43,14 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
 
-      - name: Update tag
+      - name: Update tag in YAML
         run: |
-          sed -i 's|image: .*|image: ${{env.DOCKER_IMAGE}}:${{github.run_id}}|g' k8s/deployment.yaml
+          sed -i "s|image: .*|image: ${DOCKER_IMAGE}:${GITHUB_RUN_ID}|g" k8s/deployment.yaml
 
       - name: Commit and push changes
         run: |
           git config --global user.email "pythoncpp@gmail.com"
           git config --global user.name "Amit"
-          git add .
-          git commit -m "Update tag in deployment.yaml"
+          git add k8s/deployment.yaml
+          git commit -m "Update tag in deployment.yaml" || echo "No changes to commit"
           git push
