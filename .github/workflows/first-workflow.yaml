@@ -16,22 +16,3 @@ jobs:
       # first step
       - name: Hello World
         run: echo "hello world"
-
-# workflow name
-name: First Workflow
-
-# event
-on: [push]
-
-# collection of jobs
-jobs:
-  # job name
-  job2:
-    # runner
-    runs-on: ubuntu-latest
-
-    # steps to execute
-    steps:
-      # first step
-      - name: Hello World
-        run: echo "hello world"
