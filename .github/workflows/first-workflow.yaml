@@ -1,15 +1,18 @@
 # workflow name
 name: First Workflow
+
 # event
-on: [push] 
+on: [push]
+
 # collection of jobs
 jobs:
   # job name
-    jobl:
-      # runner
-      runs-on: ubuntu-latest
-      # steps to execute
-      steps:
-        # first step
-          -name: hello world
-          run: echo "hello world"
+  job1:
+    # runner
+    runs-on: ubuntu-latest
+
+    # steps to execute
+    steps:
+      # first step
+      - name: Hello World
+        run: echo "hello world"
