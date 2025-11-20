@@ -7,7 +7,7 @@ permissions:
 
 # global variables
 env:
-  DOCKER_IMAGE: amitksunbeam/github-action-demo
+  DOCKER_IMAGE: abhishekpatil1008/github-action-demo
 
 # select the event
 on:
